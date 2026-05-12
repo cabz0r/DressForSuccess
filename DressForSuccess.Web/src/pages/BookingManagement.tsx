@@ -12,6 +12,7 @@ const BookingManagement: React.FC = () => {
   const [actionData, setActionData] = useState({ volunteerId: '', notes: '', reason: '' })
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
+  const [unassignedOnly, setUnassignedOnly] = useState(false)
 
   const load = async () => {
     const [b, v] = await Promise.all([getBookings(), getVolunteers()])
@@ -26,7 +27,7 @@ const BookingManagement: React.FC = () => {
     if (tab === 'completed') return b.status === 'Completed'
     if (tab === 'cancelled') return b.status === 'Cancelled' || b.status === 'NoShow'
     return true
-  })
+  }).filter(b => !unassignedOnly || !b.volunteerId)
 
   const handleAssign = async () => {
     if (!modal || !actionData.volunteerId) return
@@ -67,6 +68,12 @@ const BookingManagement: React.FC = () => {
           </button>
         ))}
       </div>
+
+      <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', fontSize: '0.9rem', cursor: 'pointer' }}>
+        <input type="checkbox" checked={unassignedOnly} onChange={e => setUnassignedOnly(e.target.checked)}
+          style={{ width: 18, height: 18, accentColor: 'var(--primary)', cursor: 'pointer' }} />
+        Show only unassigned bookings
+      </label>
 
       <div className="card">
         <div className="card-body">
