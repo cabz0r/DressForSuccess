@@ -35,11 +35,22 @@ public class ClientsController : ControllerBase
             Phone = dto.Phone,
             Address = dto.Address,
             ReferralAgency = (ReferralAgency)dto.ReferralAgency,
-            Notes = dto.Notes
+            Notes = dto.Notes ?? string.Empty
         };
         _db.Clients.Add(client);
         await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = client.Id }, client);
+        return CreatedAtAction(nameof(Get), new { id = client.Id }, new
+        {
+            client.Id,
+            client.FirstName,
+            client.LastName,
+            client.Email,
+            client.Phone,
+            client.Address,
+            client.ReferralAgency,
+            client.Notes,
+            client.CreatedAt
+        });
     }
 
     [HttpPut("{id}")]

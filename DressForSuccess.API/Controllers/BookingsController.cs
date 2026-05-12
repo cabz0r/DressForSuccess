@@ -46,13 +46,24 @@ public class BookingsController : ControllerBase
             VolunteerId = dto.VolunteerId,
             AppointmentDate = dto.AppointmentDate,
             ServiceType = dto.ServiceType,
-            Notes = dto.Notes,
+            Notes = dto.Notes ?? string.Empty,
             Status = BookingStatus.Scheduled
         };
         _db.Bookings.Add(booking);
         await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = booking.Id },
-            await _db.Bookings.Include(b => b.Client).Include(b => b.Volunteer).FirstAsync(b => b.Id == booking.Id));
+
+        // Return simple object to avoid circular reference issues
+        return CreatedAtAction(nameof(Get), new { id = booking.Id }, new
+        {
+            booking.Id,
+            booking.ClientId,
+            booking.VolunteerId,
+            booking.AppointmentDate,
+            booking.Status,
+            booking.ServiceType,
+            booking.Notes,
+            booking.CreatedAt
+        });
     }
 
     [HttpPatch("{id}/assign-volunteer")]

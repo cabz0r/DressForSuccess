@@ -1,6 +1,12 @@
 # Dress for Success - Start All Services
 Write-Host "Starting Dress for Success..." -ForegroundColor Magenta
 
+# Kill any existing instances
+Write-Host "Cleaning up old processes..." -ForegroundColor Yellow
+Get-Process -Name dotnet -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 2
+
 # Start API
 Write-Host "`n[1/2] Starting API on http://localhost:5000..." -ForegroundColor Cyan
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$PSScriptRoot\DressForSuccess.API'; Write-Host 'API Starting...' -ForegroundColor Green; dotnet run --no-launch-profile"

@@ -6,11 +6,11 @@ public record AuthResponseDto(string Token, int Id, string FirstName, string Las
 
 public record CreateClientDto(
     string FirstName, string LastName, string Email, string Phone,
-    string Address, int ReferralAgency, string Notes);
+    string Address, int ReferralAgency, string? Notes);
 
 public record CreateBookingDto(
     int ClientId, int? VolunteerId, DateTime AppointmentDate,
-    string ServiceType, string Notes);
+    string ServiceType, string? Notes);
 
 public record AssignVolunteerDto(int VolunteerId);
 
