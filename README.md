@@ -47,6 +47,44 @@ cd DressForSuccess.Web
 node_modules\.bin\vite --port 3000
 ```
 
+### PowerShell Scripts
+
+All scripts are in the solution root (`C:\DEV\LEN\DressForSuccess`). Run with:
+```powershell
+powershell -ExecutionPolicy Bypass -File <script>.ps1
+```
+
+| Script | Description |
+|--------|-------------|
+| `start.ps1` | Kills existing processes, launches the API and Frontend in separate windows, and opens the browser |
+| `seed-data.ps1` | Populates the database with 3 volunteers, 5 clients, and 7 bookings across all statuses |
+| `clear-database.ps1` | Stops the API, deletes the SQLite database file, and prints restart instructions |
+
+**Typical workflow — fresh start with test data:**
+```powershell
+cd C:\DEV\LEN\DressForSuccess
+.\clear-database.ps1          # Wipe the database
+.\start.ps1                   # Start API + Frontend
+# Wait a few seconds for the API to be ready, then:
+.\seed-data.ps1               # Populate test data
+```
+
+**Seed data summary:**
+
+| Entity | Count | Details |
+|--------|-------|---------|
+| Volunteers | 3 | Sarah Mitchell, David Chen, Priya Patel |
+| Clients | 5 | Each with a different referral agency |
+| Bookings | 7 | 1 Scheduled, 3 Confirmed, 2 Completed, 1 Cancelled |
+
+**Test logins (created by `seed-data.ps1`):**
+
+| Email | Password |
+|-------|----------|
+| `sarah.mitchell@dfs.org` | `Volunteer1!` |
+| `david.chen@dfs.org` | `Volunteer2!` |
+| `priya.patel@dfs.org` | `Volunteer3!` |
+
 ---
 
 ## 🌐 Pages & Features
