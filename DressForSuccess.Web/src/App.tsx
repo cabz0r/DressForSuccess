@@ -9,6 +9,8 @@ import VolunteerDashboard from './pages/VolunteerDashboard'
 import BookingManagement from './pages/BookingManagement'
 import ClientServices from './pages/ClientServices'
 import Store from './pages/Store'
+import Notifications from './pages/Notifications'
+import Insights from './pages/Insights'
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useAuth()
@@ -22,10 +24,12 @@ const AppRoutes: React.FC = () => (
       <Route path="/" element={<Home />} />
       <Route path="/client-services" element={<ClientServices />} />
       <Route path="/store" element={<Store />} />
+      <Route path="/insights" element={<Insights />} />
       <Route path="/volunteer/login" element={<VolunteerLogin />} />
       <Route path="/volunteer/register" element={<VolunteerRegister />} />
       <Route path="/volunteer/dashboard" element={<ProtectedRoute><VolunteerDashboard /></ProtectedRoute>} />
       <Route path="/volunteer/bookings" element={<ProtectedRoute><BookingManagement /></ProtectedRoute>} />
+      <Route path="/volunteer/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </>

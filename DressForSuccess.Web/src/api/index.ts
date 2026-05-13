@@ -56,3 +56,30 @@ export const getCategories = () => api.get<string[]>('/products/categories')
 export const sendChat = (message: string, history: { role: string; content: string }[]) =>
   api.post<{ reply: string }>('/chat', { message, history })
 
+// --- Notifications ---
+export interface AppNotification {
+  id: number; volunteerId?: number; clientId?: number; bookingId?: number
+  type: string; event: string; recipient: string; subject: string; body: string
+  isRead: boolean; isSent: boolean; sentAt: string; createdAt: string
+}
+export const getVolunteerNotifications = (volunteerId: number) =>
+  api.get<AppNotification[]>(`/notifications/volunteer/${volunteerId}`)
+export const getUnreadCount = (volunteerId: number) =>
+  api.get<{ count: number }>(`/notifications/unread-count/${volunteerId}`)
+export const markNotificationRead = (id: number) =>
+  api.patch(`/notifications/${id}/read`)
+export const markAllRead = (volunteerId: number) =>
+  api.patch(`/notifications/read-all/${volunteerId}`)
+
+// --- Insights ---
+export interface InsightsData {
+  summary: { totalClients: number; totalBookings: number; totalVolunteers: number; completedBookings: number; cancelledBookings: number; completionRate: number; cancellationRate: number }
+  statusBreakdown: { status: string; count: number }[]
+  referralBreakdown: { agency: string; count: number }[]
+  referralByCompleted: { agency: string; completedBookings: number }[]
+  monthlyTrends: { month: string; count: number }[]
+  serviceBreakdown: { service: string; count: number }[]
+  volunteerStats: { volunteerId: number; totalBookings: number; completed: number; cancelled: number }[]
+}
+export const getInsights = () => api.get<InsightsData>('/insights')
+
