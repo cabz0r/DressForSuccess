@@ -309,6 +309,9 @@ const OutfitBuilder: React.FC = () => {
           </button>
           {shareOpen && (
             <div className="ob-share-dropdown">
+              <a className="ob-share-item" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`} target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a className="ob-share-item" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(getOutfitSummaryText())}&url=${encodeURIComponent(location.href)}`} target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a className="ob-share-item" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a className="ob-share-item" href={`mailto:?subject=${encodeURIComponent('Outfit Builder design')}&body=${encodeURIComponent(getOutfitSummaryText())}`}>Email</a>
               <button className="ob-share-item" onClick={async () => { try { await navigator.clipboard.writeText(location.href) } catch {} setShareOpen(false) }}>Copy link</button>
             </div>
