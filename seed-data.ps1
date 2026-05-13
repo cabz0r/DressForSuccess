@@ -195,6 +195,16 @@ Write-Host "    - Confirmed  (assigned):    3 bookings" -ForegroundColor Yellow
 Write-Host "    - Completed  (with notes):  2 bookings" -ForegroundColor Green
 Write-Host "    - Cancelled  (with reason): 1 booking" -ForegroundColor Red
 Write-Host ""
+Write-Host "  Notifications (auto-generated):" -ForegroundColor White
+Write-Host "    - Email + SMS sent on each volunteer assignment" -ForegroundColor Gray
+Write-Host "    - Email + SMS sent on cancellations" -ForegroundColor Gray
+Write-Host "    - Email sent on booking completion" -ForegroundColor Gray
+Write-Host "    - View at: /volunteer/notifications (after login)" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Insights:" -ForegroundColor White
+Write-Host "    - View at: /insights (public)" -ForegroundColor Gray
+Write-Host "    - Referral breakdown, status chart, service types" -ForegroundColor Gray
+Write-Host ""
 Write-Host "  Volunteer Logins:" -ForegroundColor White
 Write-Host "    sarah.mitchell@dfs.org / Volunteer1!" -ForegroundColor Gray
 Write-Host "    david.chen@dfs.org     / Volunteer2!" -ForegroundColor Gray

@@ -99,6 +99,41 @@ cd C:\DEV\LEN\DressForSuccess
 | **Volunteer Register** | `/volunteer/register` | Create new volunteer account |
 | **Volunteer Dashboard** | `/volunteer/dashboard` | Stats + upcoming appointments |
 | **Booking Management** | `/volunteer/bookings` | Assign volunteers, complete, cancel bookings |
+| **Notifications** | `/volunteer/notifications` | SMS & email notification log with read/unread, filters |
+| **Insights** | `/insights` | Analytics: referral agencies, booking status breakdown, completion rates |
+
+---
+
+## 🔔 Notifications (Mock SMS & Email)
+
+When a booking action occurs, mock notifications are automatically generated:
+
+| Event | Recipients | Channels |
+|-------|-----------|----------|
+| **Volunteer Assigned** | Assigned volunteer | Email + SMS |
+| **Booking Completed** | Client | Email |
+| **Booking Cancelled** | Assigned volunteer + Client | Email + SMS |
+
+- Notifications appear in the **🔔 Notifications** page (volunteer portal)
+- Unread badge count shows in the navbar (auto-refreshes every 15 seconds)
+- Filter by: All, Unread, Assigned, Cancelled
+- Click to expand and read full message body
+- "Mark All Read" button to clear unread state
+- In production: Email via SendGrid/SMTP, SMS via Twilio
+
+---
+
+## 📊 Insights & Analytics
+
+Available at `/insights` — provides data-driven visibility into operations:
+
+- **Summary stats**: Total clients, bookings, volunteers, completion/cancellation rates
+- **Booking status donut chart**: Visual breakdown of Scheduled / Confirmed / Completed / Cancelled
+- **Top referral agencies**: Bar chart showing which agencies refer the most clients
+- **Referral agencies by completions**: Which referral pathways lead to successful outcomes
+- **Service type breakdown**: Most popular services booked
+- **Volunteer performance table**: Bookings per volunteer with completed/cancelled counts
+- **Key insights panel**: Auto-generated text insights from the data
 
 ---
 
