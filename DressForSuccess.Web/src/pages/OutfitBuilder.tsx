@@ -16,7 +16,11 @@ const db: Record<string, ClothingItem[]> = {
     { name: 'None', img: '' },
     { name: 'Brown Pants', img: `${BASE}/bottoms/BrownPants.png` },
   ],
-  shoes: [{ name: 'None', img: '' }],
+  shoes: [
+    { name: 'None', img: '' },
+    { name: 'Derby Shoes', img: `${BASE}/shoes/front-view-mens-fashion-shoes-260nw-1090942778.png` },
+    { name: 'Oxford Shoes', img: `${BASE}/shoes/shoes2.png` },
+  ],
   topbottom: [{ name: 'None', img: '' }],
 }
 

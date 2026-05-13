@@ -289,7 +289,7 @@ tr:hover td { background: #fdf6f9; }
 }
 .ob-layer-tops    { top: 12%; height: 46%; z-index: 3; }
 .ob-layer-bottoms { top: 27%; height: 65%; z-index: 2; }
-.ob-layer-shoes   { top: 85%; height: 15%; z-index: 5; }
+.ob-layer-shoes   { top: 0; height: 100%; z-index: 5; }
 .ob-layer-topbottom { top: 14%; height: 78%; z-index: 4; }
 .ob-catalog { width: 420px; margin-top: 0; position: relative; z-index: 2; }
 .ob-catalog-title {
