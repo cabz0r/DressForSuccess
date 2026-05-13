@@ -28,6 +28,7 @@ const Navbar: React.FC = () => {
         </Link>
         <div className="navbar-links">
           <Link to="/store" className="nav-link">Store</Link>
+          <Link to="/outfit-builder" className="nav-link">👗 Outfit Builder</Link>
           <Link to="/insights" className="nav-link">📊 Insights</Link>
           {user ? (
             <>

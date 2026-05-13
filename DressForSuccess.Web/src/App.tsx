@@ -11,6 +11,7 @@ import ClientServices from './pages/ClientServices'
 import Store from './pages/Store'
 import Notifications from './pages/Notifications'
 import Insights from './pages/Insights'
+import OutfitBuilder from './pages/OutfitBuilder'
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useAuth()
@@ -25,6 +26,7 @@ const AppRoutes: React.FC = () => (
       <Route path="/client-services" element={<ClientServices />} />
       <Route path="/store" element={<Store />} />
       <Route path="/insights" element={<Insights />} />
+      <Route path="/outfit-builder" element={<OutfitBuilder />} />
       <Route path="/volunteer/login" element={<VolunteerLogin />} />
       <Route path="/volunteer/register" element={<VolunteerRegister />} />
       <Route path="/volunteer/dashboard" element={<ProtectedRoute><VolunteerDashboard /></ProtectedRoute>} />
